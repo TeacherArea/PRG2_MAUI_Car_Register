@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
-using Android.OS;
-using Android.Views; // Behövs för SetStatusBarColor
+//using Android.OS;
+//using Android.Views; // Behövs för SetStatusBarColor
 
 #if WINDOWS
 using Microsoft.UI;

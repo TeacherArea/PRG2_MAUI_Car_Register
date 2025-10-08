@@ -22,6 +22,7 @@
             </HorizontalStackLayout>
             <Entry x:Name="entryManufacturer" Placeholder="Tillverkare" />
             <Entry x:Name="entryModel" Placeholder="Modell" />
+            <Entry x:Name="entryYear" Placeholder="Årsmodell" />
             <Button x:Name="buttonRegister" Text="Registrera" Clicked="OnRegisterClicked" Margin="0,0,0,20" BackgroundColor="DarkRed"/>
 
             <Label Text="Kategori:" FontAttributes="Bold" />
@@ -31,12 +32,17 @@
                 <RadioButton x:Name="radioMC" Content="MC" CheckedChanged="OnRadioCheckedChanged" />
                 <RadioButton x:Name="radioTruck" Content="Lastbil" CheckedChanged="OnRadioCheckedChanged" />
             </HorizontalStackLayout>
+            <HorizontalStackLayout  HorizontalOptions="Start" Margin="0,0,0,5" Spacing="5" >
+                <Label TranslationY="-40" Text="Visa lista:"></Label>
+                <CheckBox TranslationY="-50"   IsChecked="True" x:Name="checkBoxList" CheckedChanged="OnShowListChecked"></CheckBox>
+            </HorizontalStackLayout>
 
-            <ListView x:Name="listViewVehicles" Margin="0,0,0,20"/>
+            <ListView TranslationY="-30" x:Name="listViewVehicles" Margin="0,0,0,20" BackgroundColor="#a1a1a1" HorizontalOptions="Start" WidthRequest="350"  />
 
             <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="20">
+
                 <Entry x:Name="entrySearchRegistrationNumber" HorizontalOptions="FillAndExpand" Placeholder="Sök på registreringsnummer"></Entry>
-                <Button x:Name="buttonSearch" Text="Sök" HorizontalOptions="End" BackgroundColor="DarkRed" TextColor="White" Clicked="OnSearchClicked"/>
+                <Button x:Name="SearchButton" Text="Sök" HorizontalOptions="End" BackgroundColor="DarkRed" TextColor="White" Clicked="OnSearchClicked"/>
             </HorizontalStackLayout>
             <Label x:Name="labelSearchResult" Text="Sökresultat visas här..." TextColor="DarkRed" Margin="0,20,0,0"/>
         </VerticalStackLayout>

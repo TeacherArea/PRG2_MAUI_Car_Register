@@ -20,6 +20,7 @@
                 vehicle.RegistrationNumber = regNr;
                 vehicle.Manufacturer = entryManufacturer.Text;
                 vehicle.Model = entryModel.Text;
+                vehicle.Yearmodel = entryYear.Text;
 
                 vehicleList.Add(vehicle);
                 listViewVehicles.ItemsSource = null;
@@ -28,12 +29,14 @@
                 entryRegistrationNumber.Text = string.Empty;
                 entryManufacturer.Text = string.Empty;
                 entryModel.Text = string.Empty;
+                entryYear.Text = string.Empty; 
             }
             catch (ArgumentException ex)
             {
                 DisplayAlert("Fel", ex.Message, "OK");
             }
         }
+
 
         private void OnRadioCheckedChanged(object sender, CheckedChangedEventArgs e)
         {
@@ -72,8 +75,20 @@
                 entrySearchRegistrationNumber.Text = "Ange ett registreringsnummer för att söka.";
                 return;
             }
+            else
+            {
+                string searchValue = entrySearchRegistrationNumber.Text;
+                foreach (var car in vehicleList)
+                {
+                    if (car.RegistrationNumber == searchValue)
+                    {
+                        DisplayAlert("Fordon hittat", message: vehicleList.ToString(), "OK");
+                        return;
+                    }
+                }
+            }
 
-            var foundVehicle = vehicleList.FirstOrDefault(v => v.RegistrationNumber?.ToLower() == searchTerm);
+                var foundVehicle = vehicleList.FirstOrDefault(v => v.RegistrationNumber?.ToLower() == searchTerm);
 
             if (foundVehicle != null)
             {
@@ -87,6 +102,18 @@
             {
                 labelSearchResult.Text = "Inget fordon hittades med det registreringsnumret.";
             }
+        }
+        private void OnShowListChecked(object sender, EventArgs e)
+        {
+            if(checkBoxList.IsChecked == false)
+            {
+                listViewVehicles.IsVisible = false;
+            }
+            else
+            {
+                listViewVehicles.IsVisible = true;
+            }
+
         }
 
     }
