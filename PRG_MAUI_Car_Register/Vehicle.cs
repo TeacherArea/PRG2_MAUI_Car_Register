@@ -4,7 +4,7 @@ namespace PRG_MAUI_Car_Register
 {
     class Vehicle
     {
-        // Medlemsvariabler
+     
         public enum Type { Bil, MC, Lastbil };
         private Type vehicleType;
         private string registrationNumber = string.Empty;
@@ -74,7 +74,7 @@ namespace PRG_MAUI_Car_Register
             }
         }
 
-        // Tillverkare (måste anges, ej tom)
+    
         public string Manufacturer
         {
             get { return manufacturer; }
@@ -86,7 +86,7 @@ namespace PRG_MAUI_Car_Register
             }
         }
 
-        // Årsmodell (måste matcha exempelformat 2024; enligt [1-2][0-9][0-9][0-9])
+   
         public string YearModel
         {
             get { return yearModel; }
@@ -98,7 +98,7 @@ namespace PRG_MAUI_Car_Register
             }
         }
 
-        // ToString() för att visa fordonets info i listBox
+     
         public override string ToString()
         {
             return $"{registrationNumber}\t{vehicleType}\t{manufacturer}\t{model}\t{yearModel}";
