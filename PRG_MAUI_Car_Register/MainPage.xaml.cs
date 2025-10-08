@@ -20,6 +20,7 @@
                 vehicle.RegistrationNumber = regNr;
                 vehicle.Manufacturer = entryManufacturer.Text;
                 vehicle.Model = entryModel.Text;
+                vehicle.YearModel = entryYearModel.Text;
 
                 vehicleList.Add(vehicle);
                 listViewVehicles.ItemsSource = null;
@@ -28,6 +29,7 @@
                 entryRegistrationNumber.Text = string.Empty;
                 entryManufacturer.Text = string.Empty;
                 entryModel.Text = string.Empty;
+                entryYearModel.Text = string.Empty;
             }
             catch (ArgumentException ex)
             {
@@ -78,10 +80,11 @@
             if (foundVehicle != null)
             {
                 labelSearchResult.Text = $"Fordon hittat:\n" +
-                                         $"Registreringsnummer: {foundVehicle.RegistrationNumber}\n" +
-                                         $"Tillverkare: {foundVehicle.Manufacturer}\n" +
-                                         $"Modell: {foundVehicle.Model}\n" +
-                                         $"Typ: {foundVehicle.VehicleType}";
+                          $"Registreringsnummer: {foundVehicle.RegistrationNumber}\n" +
+                          $"Tillverkare: {foundVehicle.Manufacturer}\n" +
+                          $"Modell: {foundVehicle.Model}\n" +
+                          $"Årsmodell: {foundVehicle.YearModel}\n" + 
+                          $"Typ: {foundVehicle.VehicleType}";
             }
             else
             {

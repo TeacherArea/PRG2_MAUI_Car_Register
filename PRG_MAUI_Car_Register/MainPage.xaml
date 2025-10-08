@@ -22,7 +22,10 @@
             </HorizontalStackLayout>
             <Entry x:Name="entryManufacturer" Placeholder="Tillverkare" />
             <Entry x:Name="entryModel" Placeholder="Modell" />
+            <Entry x:Name="entryYearModel" Placeholder="Årsmodell (t.ex. 2024)" Keyboard="Numeric"/>
             <Button x:Name="buttonRegister" Text="Registrera" Clicked="OnRegisterClicked" Margin="0,0,0,20" BackgroundColor="DarkRed"/>
+            
+
 
             <Label Text="Kategori:" FontAttributes="Bold" />
             <HorizontalStackLayout HorizontalOptions="Center" Margin="0,0,0,20" Spacing="10" >

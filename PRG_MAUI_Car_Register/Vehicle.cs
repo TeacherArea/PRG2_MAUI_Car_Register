@@ -1,25 +1,27 @@
-﻿namespace PRG_MAUI_Car_Register
+﻿using System.Text.RegularExpressions;
+
+namespace PRG_MAUI_Car_Register
 {
     class Vehicle
     {
-        // Medlemsvariabler
+     
         public enum Type { Bil, MC, Lastbil };
         private Type vehicleType;
         private string registrationNumber = string.Empty;
         private string manufacturer = string.Empty;
         private string model = string.Empty;
+        private string yearModel = string.Empty;
 
-        // Konstruktor (en metod med samma namn som klassen, som returnerar ett objekt)
-        public Vehicle(Type vehicleType) // en konstruktor kan, men måste inte, ta parametrar
+        // Konstruktor
+        public Vehicle(Type vehicleType)
         {
             this.vehicleType = vehicleType;
         }
 
-        // Get-Set för att hålla variablerna privata, och för att validera inkommande värden från UI (user interface, användargränssnittet)
+        // Registreringsnummer
         public string RegistrationNumber
         {
             get { return registrationNumber; }
-
             set
             {
                 if (value.Length == 6)
@@ -53,36 +55,53 @@
             }
         }
 
-        // Fordonstyp tas in från dropdown-menyn, och behöver därför inte valideras
+        // Fordonstyp
         public Type VehicleType
         {
             get { return vehicleType; }
             set { this.vehicleType = value; }
         }
 
-        //TODO Tillverkare ska valideras, sparas i objektet och visas i UI
+        // Modell (måste anges, ej tom)
         public string Model
         {
             get { return model; }
-            set { this.model = value; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Modell får inte vara tom.");
+                model = value.Trim();
+            }
         }
 
-        //TODO Modell ska valideras, sparas i objektet och visas i UI
+    
         public string Manufacturer
         {
             get { return manufacturer; }
-            set { this.manufacturer = value; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Tillverkare får inte vara tom.");
+                manufacturer = value.Trim();
+            }
         }
 
-        //TODO Att spara årsmodell ska möjliggöras, ska valideras, sparas i objektet och visas i UI
+   
+        public string YearModel
+        {
+            get { return yearModel; }
+            set
+            {
+                if (!Regex.IsMatch(value, @"^[1-2][0-9]{3}$"))
+                    throw new ArgumentException("Årsmodell måste anges i formatet YYYY (t.ex. 2024).");
+                yearModel = value;
+            }
+        }
 
-
-        // Klassens  eventuella övriga metoder brukar finnas här, här en override av ToString()
-
-        //TODO Modifiera overriden på ToString() så att allt visas som önskat i UIs listBox
+     
         public override string ToString()
         {
-            return this.registrationNumber + "\t" + this.vehicleType + "\t" + this.manufacturer + "\t" + this.model;
+            return $"{registrationNumber}\t{vehicleType}\t{manufacturer}\t{model}\t{yearModel}";
         }
     }
 }
