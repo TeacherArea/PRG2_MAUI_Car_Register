@@ -88,7 +88,7 @@ namespace PRG_MAUI_Car_Register.Model
 
     
         public abstract string GetDescription();
-
+        public string Description => GetDescription();
         public override string ToString() => GetDescription();
     }
 }
