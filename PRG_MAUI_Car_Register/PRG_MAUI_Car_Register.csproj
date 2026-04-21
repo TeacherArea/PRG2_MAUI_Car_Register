@@ -53,4 +53,8 @@
     <PackageReference Update="Microsoft.Maui.Controls" Version="10.0.51" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
+
 </Project>

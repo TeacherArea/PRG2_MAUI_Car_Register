@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
-//using Android.Views; // Behövs för SetStatusBarColor
+//using Android.Views; // 
 
 #if ANDROID
 using Android.OS;
-using Android.Views; // Behövs för SetStatusBarColor
+using Android.Views; 
 #endif
 
 #if WINDOWS
@@ -62,7 +62,7 @@ namespace PRG_MAUI_Car_Register
                 {
                     android.OnCreate((activity, bundle) =>
                     {
-                        // Ändra färgen på statusfältet på Android
+                    
                         if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop)
                         {
                             activity.Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#000000"));

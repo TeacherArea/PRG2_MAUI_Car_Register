@@ -9,10 +9,12 @@ namespace PRG_MAUI_Car_Register.Model
     public class Motorcycle : Vehicle
     {
         public bool HasSidecar { get; set; }
+        public Motorcycle() : base() { }
 
         public Motorcycle(string registrationNumber, string manufacturer, string model, string yearModel, bool hasSidecar)
             : base(registrationNumber, manufacturer, model, yearModel)
         {
+            Type = "Motorcycle";
             HasSidecar = hasSidecar;
         }
 

@@ -4,11 +4,24 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using PRG_MAUI_Car_Register.Services;
+using System.Diagnostics;
 
 namespace PRG_MAUI_Car_Register.ViewModel
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
+        public MainPageViewModel()
+        {
+            Debug.WriteLine("Constructor körs");
+
+            allVehicles = dataService.Load();
+
+            Debug.WriteLine($"Laddade {allVehicles.Count} fordon");
+
+            FilterVehicles();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
@@ -20,8 +33,8 @@ namespace PRG_MAUI_Car_Register.ViewModel
 
         public ObservableCollection<Vehicle> VehicleList { get; set; } = new ObservableCollection<Vehicle>();
         private List<Vehicle> allVehicles = new List<Vehicle>();
+        private DataService dataService = new DataService();
 
-        // 🔧 PROPERTIES (FIXADE)
 
         private string registrationNumber = string.Empty;
         public string RegistrationNumber
@@ -58,7 +71,7 @@ namespace PRG_MAUI_Car_Register.ViewModel
             set { selectedType = value; OnPropertyChanged(); }
         }
 
-        // 🔥 VIKTIG
+
         private string selectedCategory = "Alla";
         public string SelectedCategory
         {
@@ -66,7 +79,7 @@ namespace PRG_MAUI_Car_Register.ViewModel
             set
             {
                 selectedCategory = value;
-                OnPropertyChanged();     // 🔥 detta saknades
+                OnPropertyChanged();    
                 FilterVehicles();
             }
         }
@@ -85,7 +98,6 @@ namespace PRG_MAUI_Car_Register.ViewModel
             set { searchResult = value; OnPropertyChanged(); }
         }
 
-        // 🔧 METODER
 
         public void RegisterVehicle()
         {
@@ -100,9 +112,14 @@ namespace PRG_MAUI_Car_Register.ViewModel
                 };
 
                 allVehicles.Add(vehicle);
+
+                Debug.WriteLine($"Lägger till fordon: {vehicle.RegistrationNumber}");
+
+                dataService.Save(allVehicles); 
+
                 FilterVehicles();
 
-                // Rensa input (NU uppdateras UI korrekt)
+
                 RegistrationNumber = string.Empty;
                 Manufacturer = string.Empty;
                 Model = string.Empty;
