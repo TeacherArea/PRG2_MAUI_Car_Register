@@ -19,6 +19,7 @@
                 vehicle.RegistrationNumber = entryRegistrationNumber.Text; ;
                 vehicle.Manufacturer = entryManufacturer.Text;
                 vehicle.Model = entryModel.Text;
+                vehicle.Year = Vehicle.ParseYear(entryYear.Text);
 
                 vehicleList.Add(vehicle);
                 listViewVehicles.ItemsSource = null;
@@ -93,6 +94,7 @@
             entryRegistrationNumber.Text = string.Empty;
             entryManufacturer.Text = string.Empty;
             entryModel.Text = string.Empty;
+            entryYear.Text = string.Empty;
         }
     }
 }
