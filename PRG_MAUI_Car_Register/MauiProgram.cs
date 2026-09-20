@@ -1,13 +1,15 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Maui.LifecycleEvents;
-using Android.OS;
-using Android.Views; // Behövs för SetStatusBarColor
 
 #if WINDOWS
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Windows.Graphics;
 using Microsoft.Maui.Platform;
+#endif
+
+#if ANDROID
+using Android.OS;
 #endif
 
 namespace PRG_MAUI_Car_Register
@@ -36,7 +38,7 @@ namespace PRG_MAUI_Car_Register
                 {
                     wndLifeCycleBuilder.OnWindowCreated(window =>
                     {
-                        const int windowWidth = 400;
+                        const int windowWidth = 1200;
                         const int windowHeight = 800;
 
                         var mauiWindow = (MauiWinUIWindow)window;
