@@ -53,25 +53,7 @@ namespace PRG_MAUI_Car_Register
 
                 switch (selectedType)
                 {
-                    case "Bil":
-                        if (!int.TryParse(entryDoors.Text, out int doors))
-                        {
-                            throw new ArgumentException("Antal dörrar måste vara ett heltal.");
-                        }
-                        vehicle = new Car(selectedType, regNr, manufacturer, model, modelYear, doors); 
-                        break;
-
-                    case "MC":
-                        vehicle = new MC(selectedType, regNr, manufacturer, model, modelYear, category); 
-                        break;
-
-                    case "Lastbil":
-                        if (!double.TryParse(entryLoadCapacity.Text, out double loadCapacity))
-                        {
-                            throw new ArgumentException("Vilken lastkapacitet i ton har din lastbil.");
-                        }
-                        vehicle = new Truck(selectedType, regNr, manufacturer, model, modelYear, loadCapacity); 
-                        break;
+    
 
                     default:
                         throw new ArgumentException("Ogiltig fordonstypp");
